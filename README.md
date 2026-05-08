@@ -3,6 +3,8 @@ Computercraft-Tweaked script to scan for ores using an `Advanced Geo Pocket Comp
 It displays the ores (with height indication) on the display using the Player Detector as a self-orientation method.
 Allows for custom allow-listing of ores.
 
+![In cave looking at diamond ore holding an active handheldGeoscanner](docs/screenshot1.png)
+
 ## Setup
 To install CC-handheldGeoscanner, enter this command in the pocket computer CLI or download the `handheldGeoscanner.lua` file from the list above:
 ```
