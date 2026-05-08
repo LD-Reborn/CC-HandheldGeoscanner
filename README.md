@@ -1,5 +1,5 @@
 # CC-handheldGeoscanner
-Computercraft-Tweaked script to scan for ores using an `Advanced Geo Pocket Computer` and a `Player Detector`
+Computercraft-Tweaked GUI program to scan for ores using an `Advanced Geo Pocket Computer` and a `Player Detector`
 It displays the ores (with height indication) on the display using the Player Detector as a self-orientation method.
 Allows for custom allow-listing of ores.
 
