@@ -199,22 +199,22 @@ while true do
             if relativeY == 0 then
                 textColor = colors.lime
                 text = "O"
-            elseif relativeY < 0 and relativeY > -3 then
+            elseif isBetween(relativeY, -3, 0, true, false) then
                 textColor = colors.green
                 text = "v"
-            elseif relativeY > 0 and relativeY < 3 then
+            elseif isBetween(relativeY, 0, 3, false, true) then
                 textColor = colors.green
                 text = "^"
-            elseif relativeY < -3 and relativeY > -10 then
+            elseif isBetween(relativeY, -10, -3, true, false) then
                 textColor = colors.yellow
                 text = "v"
-            elseif relativeY > 3 and relativeY < 10 then
+            elseif isBetween(relativeY, 3, 10, false, true) then
                 textColor = colors.yellow
                 text = "^"
-            elseif relativeY < -10 and relativeY > -32 then
+            elseif isBetween(relativeY, -32, -10, true, false) then
                 textColor = colors.orange
                 text = "v"
-            elseif relativeY > 10 and relativeY < 32 then
+            elseif isBetween(relativeY, 10, 32, false, true) then
                 textColor = colors.orange
                 text = "^"
             end
