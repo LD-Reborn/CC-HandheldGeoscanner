@@ -1,8 +1,8 @@
 -- Prerequisites
 local oreAllowList = {
     ["minecraft:ancient_debris"] = colors.black,
-    -- ["minecraft:iron_ore"] = colors.gray,
-    -- ["minecraft:copper_ore"] = colors.brown,
+    ["minecraft:iron_ore"] = colors.gray,
+    ["minecraft:copper_ore"] = colors.brown,
     ["minecraft:gold_ore"] = colors.yellow,
     ["minecraft:deepslate_gold_ore"] = colors.yellow,
     ["minecraft:diamond_ore"] = colors.blue,
