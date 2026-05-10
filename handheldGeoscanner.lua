@@ -1,15 +1,9 @@
 -- Prerequisites
-local oreAllowList = {
-    ["minecraft:ancient_debris"] = colors.black,
-    ["minecraft:iron_ore"] = colors.gray,
-    ["minecraft:copper_ore"] = colors.brown,
-    ["minecraft:gold_ore"] = colors.yellow,
-    ["minecraft:deepslate_gold_ore"] = colors.yellow,
-    ["minecraft:diamond_ore"] = colors.blue,
-    ["minecraft:deepslate_diamond_ore"] = colors.blue,
-    ["minecraft:nether_portal"] = colors.purple,
-    ["ae2:quartz_cluster"] = colors.cyan
-}
+local config = fs.open("config.json", "r")
+local configuration = textutils.unserializeJSON(config.readAll())
+config.close()
+
+local oreAllowList = configuration.oresAllowList
 local CCGUIUrl = "https://raw.githubusercontent.com/LD-Reborn/CC-GUI/refs/heads/main/GUI.lua"
 local GUI = {}
 local success, result = pcall(function()
@@ -61,10 +55,12 @@ function getPlayerInfo(wrappedPeripheral)
 end
 
 function checkIsGeoDetector(wrappedPeripheral)
+    if not wrappedPeripheral then return false end
     return wrappedPeripheral.scan ~= nil
 end
 
 function checkIsPlayerDetector(wrappedPeripheral)
+    if not wrappedPeripheral then return false end
     return wrappedPeripheral.getPlayersInRange ~= nil and wrappedPeripheral.getPlayer ~= nil
 end
 
@@ -142,6 +138,10 @@ local playerPosLastGeo = {0, 0, 0}
 local hasGeoDetector = ensureGeoDetector() ~= false
 local hasPlayerDetector = ensurePlayerDetector() ~= false
 local backPeripheral = ensureGeoDetector()
+if not hasGeoDetector then
+    print("No Geo Scanner was detected.")
+    return
+end
 assert(checkIsGeoDetector(backPeripheral))
 ores = scanAndFilter(backPeripheral)
 
@@ -219,7 +219,7 @@ while true do
                 text = "^"
             end
             if text ~= nil and oreAllowList[value.name] ~= nil then
-                backgroundColor = oreAllowList[value.name]
+                backgroundColor = colors[oreAllowList[value.name]]
                 if GUI._2Dhit(x, y, 0, 0, termWidth, termHeight) then
                     GUI.drawText(term, x, y, textColor, backgroundColor, text)
                     GUI.drawText(term, 0, 0, textColor, backgroundColor, text)
