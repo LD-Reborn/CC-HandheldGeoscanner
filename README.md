@@ -8,7 +8,7 @@ Allows for custom allow-listing of ores.
 ## Setup
 To install CC-handheldGeoscanner, enter this command in the pocket computer CLI or download the `handheldGeoscanner.lua` file from the list above:
 ```
-wget https://raw.githubusercontent.com/LD-Reborn/CC-GUI/refs/heads/main/GUI.lua
+wget https://raw.githubusercontent.com/LD-Reborn/CC-HandheldGeoscanner/refs/heads/main/handheldGeoscanner.lua
 ```
 
 ## Usage
