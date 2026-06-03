@@ -1,12 +1,9 @@
 {
     "oresAllowList": {
-        "minecraft:ancient_debris": "black",
-        "minecraft:iron_ore": "gray",
-        "minecraft:copper_ore": "brown",
-        "minecraft:gold_ore": "green",
-        "minecraft:deepslate_gold_ore": "green",
-        "minecraft:diamond_ore": "cyan",
-        "minecraft:deepslate_diamond_ore": "blue",
+        "suspicious": "red",
+        "chest": "brown",
+        "sculk": "blue",
+        "diamond": "cyan",
         "minecraft:nether_portal": "purple",
         "ae2:quartz_cluster": "cyan"
     }

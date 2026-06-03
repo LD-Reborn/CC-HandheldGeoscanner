@@ -15,11 +15,28 @@ if not success then
 end
 
 -- Important functions
+
+local function matchesAllowlistAndGetColor(ore, allowlist)
+    if ore == nil then
+        return false, nil
+    end
+    for key, value in pairs(allowlist) do
+        match = string.gmatch(ore, key)()
+        if match then
+            return true, value
+        end
+    end
+    return false, nil
+end
+
 local function scanAndFilter(wrappedPeripheral)
     ores = wrappedPeripheral.scan(16)
     for key, value in pairs(ores) do
-        if oreAllowList[value.name] == nil then
+        success, color = matchesAllowlistAndGetColor(value.name, oreAllowList)
+        if not success then
             ores[key] = nil
+        else
+            ores[key].color = color
         end
     end
     return ores
@@ -140,6 +157,7 @@ local hasPlayerDetector = ensurePlayerDetector() ~= false
 local backPeripheral = ensureGeoDetector()
 if not hasGeoDetector then
     print("No Geo Scanner was detected.")
+    pocket.unequipBack(backPeripheral)
     return
 end
 assert(checkIsGeoDetector(backPeripheral))
@@ -218,8 +236,13 @@ while true do
                 textColor = colors.orange
                 text = "^"
             end
-            if text ~= nil and oreAllowList[value.name] ~= nil then
-                backgroundColor = colors[oreAllowList[value.name]]
+            -- file = fs.open("test.txt", "w")
+            -- file.write(textutils.serialize(value))
+            -- file.close()
+            -- print(textutils.serialize(value))
+            -- sleep(1)
+            if text ~= nil and value.color ~= nil then
+                backgroundColor = colors[value.color]
                 if GUI._2Dhit(x, y, 0, 0, termWidth, termHeight) then
                     GUI.drawText(term, x, y, textColor, backgroundColor, text)
                     GUI.drawText(term, 0, 0, textColor, backgroundColor, text)
